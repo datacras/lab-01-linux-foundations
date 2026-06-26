@@ -52,3 +52,5 @@ git push
 ---
 
 > 💡 **Sıxışdığında:** Presentation materiallarına bax → [datacras.github.io/dpe-01-linux](https://datacras.github.io/dpe-01-linux)
+
+> 🐙 **Git ilk dəfəmi?** → [GIT-GUIDE.md](GIT-GUIDE.md) — fork, clone, push addım-addım izah edilib
