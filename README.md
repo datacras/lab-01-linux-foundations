@@ -15,27 +15,32 @@ Komanda lideriniz ilk iş günündə sizə bir Ubuntu serveri verib və aşağı
 
 | # | Tapşırıq | Mövzu |
 |---|---|---|
-| [Task 01](tasks/task-01-system-info.md) | Sistem məlumatlarını topla | `uname`, `free`, `df`, `uptime` |
+| [Task 01](tasks/task-01-system-info.md) | Sistem məlumatlarını topla | `uname`, `free`, `df`, `uptime`, `history` |
 | [Task 02](tasks/task-02-directory-structure.md) | Layihə qovluq strukturunu yarat | `mkdir`, `tree`, `pwd` |
 | [Task 03](tasks/task-03-file-operations.md) | Data faylları ilə iş | `cat`, `echo`, `grep`, `sed`, `cp`, `mv`, `find` |
 | [Task 04](tasks/task-04-user-management.md) | Komanda üzvü üçün user yarat | `useradd`, `chmod`, `chown`, `ls -l` |
-| [Task 05](tasks/task-05-process-monitoring.md) | Proses monitorinqi | `ps aux`, `top`, `kill` |
+| [Task 05](tasks/task-05-process-monitoring.md) | Proses monitorinqi | `ps`, `pgrep`, `kill`, `jobs` |
 | [Task 06](tasks/task-06-package-management.md) | Lazımi alətləri quraşdır | `apt install`, `apt show`, `apt remove` |
 
 ---
 
 ## Necə submit edəcəksən?
 
-1. Bu repo-nu öz hesabına `accept` et (GitHub Classroom linki vasitəsilə)
-2. Ubuntu serverindən əmrləri işlət
-3. Hər tapşırığın çıxışını `ANSWERS.md` faylına yapışdır
-4. Faylı yadda saxla və push et:
+1. Bu repo-nu **fork** et — sağ yuxarıdakı "Fork" düyməsinə bas
+2. Fork-ladığın repo-nu Ubuntu serverinə clone et:
+   ```bash
+   git clone https://github.com/SƏNIN-USERNAME/lab-01-linux-foundations.git
+   cd lab-01-linux-foundations
+   ```
+3. Tapşırıqları et, nəticələri `ANSWERS.md`-yə yapışdır
+4. Push et:
+   ```bash
+   git add ANSWERS.md
+   git commit -m "Lab 01 tamamlandı"
+   git push
+   ```
 
-```bash
-git add ANSWERS.md
-git commit -m "Lab 01 tamamlandı"
-git push
-```
+> 🐙 **Git ilk dəfəmi?** → [GIT-GUIDE.md](GIT-GUIDE.md) — fork, clone, push addım-addım izah edilib
 
 ---
 
@@ -52,5 +57,3 @@ git push
 ---
 
 > 💡 **Sıxışdığında:** Presentation materiallarına bax → [datacras.github.io/dpe-01-linux](https://datacras.github.io/dpe-01-linux)
-
-> 🐙 **Git ilk dəfəmi?** → [GIT-GUIDE.md](GIT-GUIDE.md) — fork, clone, push addım-addım izah edilib

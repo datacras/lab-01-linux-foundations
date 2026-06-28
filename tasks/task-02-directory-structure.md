@@ -17,63 +17,47 @@
 
 ## Tapşırıqlar
 
-### 2.1 — Strukturu bir əmrlə yarat
+### 2.1 — Strukturu yarat
+Yuxarıdakı qovluq strukturunu `home` direktoriyanda yarat.
+İçiçə qovluqları **tək əmrlə** yaratmağa çalış.
 
-```bash
-mkdir -p ~/dataops-project/data/raw \
-          ~/dataops-project/data/processed \
-          ~/dataops-project/logs \
-          ~/dataops-project/scripts
-```
+💡 **Hint:** `mkdir` əmrinin içiçə qovluqları avtomatik yaradan bir flag-ı var.
+
+---
 
 ### 2.2 — Strukturu yoxla
+Yaratdığın strukturu ağac şəklində göstər.
 
-`tree` əmri ilə yarat strukturu göstər:
+💡 **Hint:** `tree` əmri — qurulu deyilsə əvvəlcə `apt install` et.
 
-```bash
-tree ~/dataops-project
-```
+---
 
-> `tree` qurulu deyilsə: `sudo apt install -y tree`
+### 2.3 — Naviqasiya
+`data/raw/`, `logs/` və `scripts/` qovluqlarına ardıcıl gir, hər birindən sonra **harada olduğunu** göstər.
 
-### 2.3 — Hər qovluğa cd ilə gir, pwd ilə yerini yoxla
+💡 **Hint:** `cd` ilə keç, `pwd` ilə yerini yoxla.
 
-```bash
-cd ~/dataops-project/data/raw
-pwd
+---
 
-cd ~/dataops-project/logs
-pwd
+### 2.4 — Relative path
+`data/raw/` içindəyikən `data/processed/` qovluğuna **tam yol yazmadan** keç.
 
-cd ~
-pwd
-```
+💡 **Hint:** `..` işarəsi bir üst qovluğa çıxmağa imkan verir.
 
-### 2.4 — Relative path ilə naviqasiya
+---
 
-`~/dataops-project/data/raw` içindəyikən `processed` qovluğuna **relative path** ilə keç:
+### 2.5 — Siyahı
+`dataops-project/` qovluğunun içini **gizli fayllar daxil** bütün detallarla listlə.
 
-```bash
-cd ~/dataops-project/data/raw
-cd ../processed
-pwd
-```
-
-### 2.5 — Qovluqların siyahısı
-
-`dataops-project` içindən `ls -la` ilə bütün qovluqları listlə:
-
-```bash
-ls -la ~/dataops-project/
-```
+💡 **Hint:** `ls` əmrinin iki flag-ını birlikdə istifadə et — biri detallar, biri gizli fayllar üçün.
 
 ---
 
 ## ANSWERS.md-yə nə yazmalısan?
 
-- `tree ~/dataops-project` çıxışı
-- `pwd` çıxışları (hər cd-dən sonra)
-- `ls -la` çıxışı
+- `tree` çıxışı (tam struktur görünməlidir)
+- Hər `cd`-dən sonrakı `pwd` çıxışı
+- `ls` çıxışı
 
 **Bonus sual:**
-`mkdir -p` olmadan `mkdir ~/dataops-project/data/raw` işləyərmi? Niyə?
+`mkdir` əmrinin həmin flag-ı olmadan içiçə qovluq yaratmağa çalışsan nə baş verir? Sına və yaz.

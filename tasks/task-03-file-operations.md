@@ -9,97 +9,72 @@
 ## Tapşırıqlar
 
 ### 3.1 — Konfiqurasiya faylı yarat
+`~/dataops-project/scripts/` qovluğunda `config.txt` adlı fayl yarat və aşağıdakı məzmunu əlavə et:
 
-`scripts/` qovluğunda `config.txt` faylı yarat və məzmun əlavə et:
-
-```bash
-cd ~/dataops-project/scripts
-
-touch config.txt
-
-echo "DB_HOST=localhost" >> config.txt
-echo "DB_PORT=5432" >> config.txt
-echo "DB_NAME=dataops" >> config.txt
-echo "LOG_LEVEL=INFO" >> config.txt
-echo "MAX_WORKERS=4" >> config.txt
 ```
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=dataops
+LOG_LEVEL=INFO
+MAX_WORKERS=4
+```
+
+💡 **Hint:** Faylı yaratmaq üçün `touch`, məzmun əlavə etmək üçün `echo` və `>>` operatoru.
+
+---
 
 ### 3.2 — Faylı oxu
+`config.txt` faylının **tam məzmununu**, **ilk 3 sətirini** və **son 2 sətirini** ayrı-ayrı göstər.
 
-```bash
-cat config.txt
-head -3 config.txt
-tail -2 config.txt
-```
+💡 **Hint:** `cat`, `head`, `tail` əmrləri — hər biri fərqli şəkildə oxuyur.
+
+---
 
 ### 3.3 — Log faylı yarat və axtar
+`~/dataops-project/logs/` qovluğunda `pipeline.log` adlı fayl yarat və aşağıdakı məzmunu əlavə et:
 
-`logs/` qovluğunda `pipeline.log` faylı yarat:
-
-```bash
-cd ~/dataops-project/logs
-
-echo "[INFO]  2026-06-26 09:00 Pipeline started" >> pipeline.log
-echo "[INFO]  2026-06-26 09:01 Reading raw data" >> pipeline.log
-echo "[ERROR] 2026-06-26 09:02 Connection timeout" >> pipeline.log
-echo "[INFO]  2026-06-26 09:03 Retrying..." >> pipeline.log
-echo "[ERROR] 2026-06-26 09:04 File not found: sales.csv" >> pipeline.log
-echo "[INFO]  2026-06-26 09:05 Pipeline finished" >> pipeline.log
+```
+[INFO]  2026-06-26 09:00 Pipeline started
+[INFO]  2026-06-26 09:01 Reading raw data
+[ERROR] 2026-06-26 09:02 Connection timeout
+[INFO]  2026-06-26 09:03 Retrying...
+[ERROR] 2026-06-26 09:04 File not found: sales.csv
+[INFO]  2026-06-26 09:05 Pipeline finished
 ```
 
-**Yalnız ERROR sətirləri tapın:**
+Yalnız **ERROR** sətirləri göstər. Neçə error var?
 
-```bash
-grep "ERROR" pipeline.log
-```
+💡 **Hint:** `grep` əmri + `wc -l` — pipe `|` ilə birləşdir.
 
-**Neçə error var?**
+---
 
-```bash
-grep "ERROR" pipeline.log | wc -l
-```
+### 3.4 — Faylı redaktə et
+`~/dataops-project/scripts/config.txt` faylında `LOG_LEVEL=INFO` dəyərini `LOG_LEVEL=DEBUG` ilə əvəz et. Faylı birbaşa dəyiş, yeni fayl yaratma.
 
-### 3.4 — sed ilə dəyiş
+💡 **Hint:** `sed` əmrinin faylı birbaşa dəyişən bir flag-ı var.
 
-`config.txt` faylında `LOG_LEVEL=INFO` dəyərini `LOG_LEVEL=DEBUG` ilə əvəz et:
+---
 
-```bash
-cd ~/dataops-project/scripts
-sed -i 's/LOG_LEVEL=INFO/LOG_LEVEL=DEBUG/' config.txt
-cat config.txt
-```
+### 3.5 — Kopyala və köçür
+- `config.txt` faylını `~/dataops-project/data/processed/config_backup.txt` adı ilə kopyala
+- `pipeline.log` faylının adını `pipeline_2026-06-26.log` olaraq dəyiş
 
-### 3.5 — Faylı kopyala və köçür
+💡 **Hint:** Kopyalamaq üçün `cp`, adını dəyişmək/köçürmək üçün `mv`.
 
-```bash
-# Konfig faylını data/processed/ qovluğuna kopyala
-cp config.txt ~/dataops-project/data/processed/config_backup.txt
+---
 
-# Yoxla
-ls -l ~/dataops-project/data/processed/
+### 3.6 — Axtar
+`~/dataops-project/` daxilindəki bütün `.txt` fayllarını tap.
 
-# Log faylını arxivlə (köçür)
-mv ~/dataops-project/logs/pipeline.log \
-   ~/dataops-project/logs/pipeline_2026-06-26.log
-
-ls ~/dataops-project/logs/
-```
-
-### 3.6 — find ilə axtar
-
-`dataops-project` içindəki bütün `.txt` fayllarını tap:
-
-```bash
-find ~/dataops-project -name "*.txt"
-```
+💡 **Hint:** `find` əmri — başlanğıc qovluq və fayl adı üçün flag var.
 
 ---
 
 ## ANSWERS.md-yə nə yazmalısan?
 
-- `cat config.txt` çıxışı (sed-dən sonra)
-- `grep "ERROR" pipeline.log` çıxışı
-- `grep "ERROR" pipeline.log | wc -l` nəticəsi
+- `cat config.txt` çıxışı (3.4-dən sonra — `LOG_LEVEL=DEBUG` görünməlidir)
+- `grep "ERROR" ~/dataops-project/logs/pipeline.log` çıxışı
+- Error sayı (`wc -l` nəticəsi)
 - `find` çıxışı
 
 **Bonus sual:**

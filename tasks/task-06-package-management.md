@@ -8,87 +8,60 @@
 
 ## Tapşırıqlar
 
-### 6.1 — Repository yenilə (HƏMİŞƏ İLK ADDIM)
+### 6.1 — Repository siyahısını yenilə
+Paket quraşdırmadan əvvəl **həmişə** repository siyahısını yenilə. Neçə paket yenilənə bilər?
 
-```bash
-sudo apt update
-```
+💡 **Hint:** `apt update` — yenilənə bilənlər üçün başqa bir `apt list` flag-ı var.
 
-Neçə paket yenilənə bilər?
-
-```bash
-apt list --upgradeable 2>/dev/null | wc -l
-```
+---
 
 ### 6.2 — Alətləri quraşdır
+`git`, `curl`, `tree` və `htop` paketlərini **tək əmrlə**, sual soruşmadan quraşdır.
 
-```bash
-sudo apt install -y git curl tree htop
-```
+💡 **Hint:** `apt install` — bir neçə paketi boşluqla ayırıb yaz. Sual soruşmamaq üçün flag var.
+
+---
 
 ### 6.3 — Qurulduğunu yoxla
+Hər alət üçün **versiyasını** və ya **harada olduğunu** göstər.
 
-```bash
-git --version
-curl --version | head -1
-which tree
-which htop
-```
+💡 **Hint:** `--version` flag-ı və ya `which` əmri.
 
-### 6.4 — Paket məlumatına bax
+---
 
-`curl` haqqında ətraflı məlumat al:
-
-```bash
-apt show curl
-```
-
-Bu məlumatdan tap:
+### 6.4 — Paket haqqında məlumat al
+`curl` paketi haqqında ətraflı məlumat al. Bu məlumatdan tap:
 - Versiyası nədir?
-- Ölçüsü nə qədərdir?
+- Disk ölçüsü nə qədərdir?
 - Hansı paketlərə dependency var?
 
+💡 **Hint:** `apt show` əmri.
+
+---
+
 ### 6.5 — Qurulu paketlər siyahısı
+Sistemdə neçə paket qurulmuşdur? `git` qurulu paketlər arasındamı?
 
-Sistemdə neçə paket qurulmuşdur?
+💡 **Hint:** `apt list --installed` — `grep` ilə filtrə et, `wc -l` ilə say.
 
-```bash
-apt list --installed 2>/dev/null | wc -l
-```
+---
 
-`git` qurulu paketlər arasındamı?
+### 6.6 — `htop`-u işlət
+`htop`-u işlət, ekranda gördüklərini 2 cümlə ilə `ANSWERS.md`-yə yaz. Çıxmaq üçün `q`.
 
-```bash
-apt list --installed 2>/dev/null | grep git
-```
-
-### 6.6 — `htop`-u işlət və çıx
-
-```bash
-htop
-```
-
-`htop` ekranında gördüklərini 2 cümlə ilə `ANSWERS.md`-yə yaz.
-Çıxmaq üçün: `q`
+---
 
 ### 6.7 — `htop`-u sil
+`htop` artıq lazım deyil — sil. Silindikdən sonra yoxla.
 
-```bash
-sudo apt remove htop
-```
+💡 **Hint:** `apt remove` — silindikdən sonra `which htop` ilə yoxla.
 
-Silindi mi?
+---
 
-```bash
-which htop
-htop
-```
+### 6.8 — Təmizlik
+Artıq lazımsız qalan dependency paketlərini sil.
 
-### 6.8 — Lazımsız paketləri təmizlə
-
-```bash
-sudo apt autoremove -y
-```
+💡 **Hint:** `apt autoremove`.
 
 ---
 
@@ -101,4 +74,4 @@ sudo apt autoremove -y
 - `which htop` çıxışı (silindikdən sonra)
 
 **Bonus sual:**
-`apt remove htop` ilə `apt purge htop` fərqi nədir? Hansını nə vaxt işlətmək lazımdır?
+`apt remove` ilə `apt purge` fərqi nədir? Hansını nə vaxt işlətmək lazımdır?

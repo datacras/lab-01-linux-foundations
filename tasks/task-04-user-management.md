@@ -2,83 +2,72 @@
 
 ## Ssenari
 
-> *"Yeni data engineer komandamıza qoşuldu: `ali`. Ona serverdə hesab açmaq və `dataops-project` qovluğuna çıxış vermək lazımdır."*
+> *"Yeni data engineer komandamıza qoşuldu: `ali`. Ona serverdə hesab açmaq, `dataops-project` qovluğunun sahibliyini vermək və icazələri düzgün qurmaq lazımdır."*
 
-> ⚠️ **Qeyd:** Bu tapşırıq `sudo` icazəsi tələb edir. `root` kimi və ya `sudo` ilə işlə.
+> ⚠️ **Qeyd:** Bu tapşırıq `sudo` icazəsi tələb edir.
 
 ---
 
 ## Tapşırıqlar
 
-### 4.1 — Yeni user yarat
+### 4.1 — User yarat
+`ali` adlı istifadəçi yarat. Home direktoriyası avtomatik yaransın.
 
-```bash
-sudo useradd -m ali
-```
+💡 **Hint:** `useradd` əmrinin home qovluğu yaradan bir flag-ı var.
 
-User yarandımı? Yoxla:
+Yarandımı yoxla — `/etc/passwd` faylında `ali`-ni axtar.
 
-```bash
-cat /etc/passwd | grep ali
-```
+💡 **Hint:** `cat` + `grep` ilə.
+
+---
 
 ### 4.2 — Şifrə təyin et
+`ali` üçün şifrə təyin et: `DataCras2026!`
 
-```bash
-sudo passwd ali
-# Şifrə: DataCras2026!
-# (iki dəfə yaz)
-```
+💡 **Hint:** `passwd` əmri — hansı user üçün olduğunu da bildirmək lazımdır.
 
-### 4.3 — `dataops-project` üçün icazələri yoxla
+---
 
-`dataops-project` qovluğunun hazırki sahibini və icazələrini gör:
+### 4.3 — Sahibliyi ver
+`~/dataops-project/` qovluğunun sahibini `ali` olaraq dəyiş. Qovluğun içindəkilərə də tətbiq olsun.
 
-```bash
-ls -la ~ | grep dataops-project
-```
+💡 **Hint:** `chown` əmrinin rekursiv işləyən bir flag-ı var.
 
-Çıxışı oxu:
-- Sahibi kim?
-- İcazə sətri nədir? (`drwxr-xr-x` kimi)
-- `ali` bu qovluğu oxuya bilərmi? Niyə?
+Dəyişdi mi? `ls -la ~` ilə yoxla.
 
-### 4.4 — `scripts/config.txt` faylının icazələrini dəyiş
+---
 
-`config.txt` faylını **sahibi** oxuyub yaza bilsin, **qrup və digərləri** yalnız oxusun:
+### 4.4 — `config.txt` icazələrini qur
+`~/dataops-project/scripts/config.txt` faylı üçün:
+- **Sahibi** oxuyub yaza bilsin
+- **Qrup və digərləri** yalnız oxusun
 
-```bash
-chmod 644 ~/dataops-project/scripts/config.txt
-ls -l ~/dataops-project/scripts/config.txt
-```
+💡 **Hint:** `chmod` — rəqəmsal (octal) format istifadə et.
 
-### 4.5 — `logs/` qovluğuna yalnız sahibi girə bilsin
+---
 
-```bash
-chmod 700 ~/dataops-project/logs/
-ls -ld ~/dataops-project/logs/
-```
+### 4.5 — `logs/` qovluğunu qoru
+`~/dataops-project/logs/` qovluğuna **yalnız sahibi** girə bilsin, başqaları heç bir icazəyə malik olmasın.
+
+💡 **Hint:** `chmod` — tam bağlı qovluq üçün hansı rəqəm lazımdır?
+
+---
 
 ### 4.6 — `ls -l` çıxışını oxu
-
-```bash
-ls -l ~/dataops-project/scripts/config.txt
-```
-
-Çıxışı `ANSWERS.md`-yə yapışdır və hər sütunu izah et:
-- Fayl tipi nədir? (`-` nə deməkdir?)
-- Owner kim?
-- Group kim?
-- `rw-r--r--` icazəsi nə deməkdir?
+`config.txt` faylına `ls -l` işlət. Çıxışdakı hər sütunu izah et:
+- Fayl tipi nədir?
+- Owner və Group kim?
+- `rw-r--r--` nə deməkdir?
 
 ---
 
 ## ANSWERS.md-yə nə yazmalısan?
 
 - `cat /etc/passwd | grep ali` çıxışı
+- `ls -la ~` çıxışı (chown-dan sonra — sahibin `ali` olduğu görünməlidir)
 - `ls -l config.txt` çıxışı (chmod-dan sonra)
 - `ls -ld logs/` çıxışı
 - 4.6-nın izahı (öz sözlərinlə)
 
 **Bonus sual:**
-`chmod 644` əvəzinə symbolic olaraq necə yazardın? (`u=`, `g=`, `o=` ilə)
+`chmod 644` əvəzinə symbolic olaraq necə yazardın? (`u`, `g`, `o` ilə)
